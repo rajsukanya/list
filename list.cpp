@@ -2,18 +2,20 @@
 
 List::List()
 {
-  int size = 0; 
+  //int size = 0; 
 }
 
 List::~List()
 {
-  int size = 0;
+  //int size = 0;
 }
 
 bool List::is_empty() const
 {
+  /*
   int size;
   return(0 == size);
+  */
 }
 
 int List::length() const
@@ -74,4 +76,8 @@ void List::retrieve(int position, list_item_type &DataItem, bool &success) const
     item = items[position - 1];
   }
   */
+}
+
+bool List::get_status()
+{
 }
