@@ -1,17 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include "list.h"
+#include "list.cpp"
 using namespace std;
 
 #define READ 0
 #define WRITE 1
 #define DELETE 2
 
-const int NUM_OPERATIONS = 10;
-
-void retrieve(int position, list_item_type &DataItem, bool &success) const;
-void insert(int new_position, list_item_type new_item, bool &success);
-void remove(int position, bool &success);
 bool get_status();
 
 int main()
@@ -25,36 +22,36 @@ int main()
     exit(1);
   }
 
-  string line;
-  bool actual, success;
+  string line, tag;
+  bool expected, success;
   int position, new_position, DataItem;
-  int lineNum, expected, numError = 0;
-  int op[NUM_OPERATIONS], key[NUM_OPERATIONS], expected_status[NUM_OPERATIONS];
+  int value, lineNum, expected, numError = 0;
+//  int op[NUM_OPERATIONS], key[NUM_OPERATIONS], expected_status[NUM_OPERATIONS];
 
   lineNum = 0;
+   
   while(getline(inStream, line))
   {
-    //cout << lineNum << " --> " << line <<endl;
-    lineNum++;
-  
-    if(line == "NUM_OPERATIONS 10")
+    //lineNum++;
+    inStream >> tag >> value;
+    cout << "TAG: " << tag <<endl;
+    cout << "VALUE: " << value <<endl;
+    
+    if(tag == "NUM_OPERATIONS")
     {
-      for(int i = 0; i < NUM_OPERATIONS; i++)
+      for(int i = 0; i < value; i++)
       {
         inStream >> op[i] >> key[i] >> expected_status[i];
-       
-        actual = get_status();
-        expected = expected_status[i];
+      
+        if(expected_status[i] == 0)
+          expected = false;
+        if(expected_status[i] == 1)
+          expected = true;
+      }
+      inStream.close();
 
-        if(expected == 0)
-          actual = false;
-        if(expected == 1)
-          actual = true;
-          
-        //cout << op[i] <<endl;
-        //cout << key[i] <<endl;
-        //cout << expected_status[i] <<endl;
-
+      //make loop
+      {  
         switch(op[i])
         {
           case READ:
@@ -66,25 +63,24 @@ int main()
           default:
             cout << "Error" <<endl;
             break;
-        }
-
-        if(actual == false && expected == false)
-          cout << "Good" <<endl;
-        if(actual == true && expected == true)
-          cout << "Good" <<endl;
-        if(actual == false && expected == true)
-        {
-          cout << "Error" <<endl;
-          numError++;
-        }
-        if(actual == true && expected == false)
-        {
-          cout << "Error" <<endl;
-          numError++;
-        }
+         }
+       
+         actual = get_status();
+         if(actual == false && expected == false)
+           cout << "Good" <<endl;
+         if(actual == true && expected == true)
+            cout << "Good" <<endl;
+         if(actual == false && expected == true)
+         {
+            cout << "Error" <<endl;
+            numError++;
+         }
+         if(actual == true && expected == false)
+         {
+           cout << "Error" <<endl;
+           numError++;
+         }
       }
      }
     }
-
-  inStream.close();
 }
