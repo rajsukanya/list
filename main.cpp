@@ -1,8 +1,6 @@
-#include <iostream>
-#include "list.h"
+#include "memo_batch_tester.h"
 
-using namespace std;
-
-int main(int argc, char *argv[]){
-  cout << "Hello\n";
+int main(int argc, char *argv[])
+{
+  memo_batch_tester(argc, argv);
 }

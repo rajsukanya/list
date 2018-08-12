@@ -1,4 +1,6 @@
+#include <iostream>
 #include "list.h"
+using namespace std;
 
 List::List()
 {
@@ -24,6 +26,7 @@ int List::length() const
 
 void List::insert(int new_position, list_item_type new_item, bool &success)
 {
+  cout << "Insert" <<endl;
   /*
   if(N == size)
     success = false; //array is full, cannot insert
@@ -48,6 +51,7 @@ void List::insert(int new_position, list_item_type new_item, bool &success)
 
 void List::remove(int position, bool &success)
 {
+  cout << "Remove" <<endl;
   /*
   if(0 == size)
     success = false; //array is empty
@@ -69,6 +73,7 @@ void List::remove(int position, bool &success)
 
 void List::retrieve(int position, list_item_type &DataItem, bool &success) const
 {
+  cout << "Retrieve" <<endl;
   /*
   success = (1 <= position && position <= size);
   if(success)
