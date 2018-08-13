@@ -12,12 +12,32 @@ using namespace std;
 int memo_batch_tester(int argc, char *argv[])
 {
   ifstream inStream;
-  string line, tag, file;
+  string line, tag, filename;
   list_item_type new_item;
   bool success, actual;
   int position, new_position, DataItem;
   int i, value, numError = 0;
 
+  /*================================================================================*/
+  /*  Task 1: Deal with command line parameters  */
+  
+  /* for now just this, but later this section gets more complicated */
+  filename = argv[1];
+  
+  /*  Task 1 is done!  */
+  /*================================================================================*/
+  /*  Task 2 read data from file  */
+  
+  
+  
+  /*  Task 2 is done! */
+  /*================================================================================*/
+  /*  Task 3 perform operations and check for errors */
+  
+  /*  Task 3 is done! No more code below this line */
+  /*================================================================================*/
+  
+  
   for(i = 0; i < argc; i++)
   {
     file = argv[1];
