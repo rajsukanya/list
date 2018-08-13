@@ -16,7 +16,7 @@ int memo_batch_tester(int argc, char *argv[])
   list_item_type new_item;
   bool success, actual;
   int position, new_position, DataItem;
-  int i, value, numError = 0;
+  int i, value, numError = 0, num_errors = 0;
   int op[value], key[value], t;
   bool expected_status[value];
 
@@ -96,8 +96,16 @@ int memo_batch_tester(int argc, char *argv[])
       cout << "Error" << " & "<<endl;
       numError++;
     }
+    /* you check errors using the above code */
+    /* why not just do this? */
+    if(actual != expected_status[i]){
+      cout << "Error" << endl;
+      num_errors++;
+    }
   }
-}
+  cout << "number of errors (Sukanya's way): " << numError << endl;
+  cout << "number of errors (Ben's way): " << num_errors << endl;
   /*  Task 3 is done! No more code below this line */
-  /*================================================================================*/
+  /*================================================================================*/  
+}
   
