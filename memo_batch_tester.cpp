@@ -12,12 +12,12 @@ using namespace std;
 int memo_batch_tester(int argc, char *argv[])
 {
   ifstream inStream;
-  string line, tag, filename;
-  list_item_type new_item, DataItem;
+  string tag, filename;
   bool success, actual_status = false;
   int position, new_position;
   int i, t, value, num_errors = 0;
-  int *op, *key;
+  int *op;
+  list_item_type *key;
   bool *expected_status;
 
   /*================================================================================*/
@@ -46,7 +46,7 @@ int memo_batch_tester(int argc, char *argv[])
     {
       //cout << "VALUE***: " << value <<endl;
       op = new int[value];
-      key = new int[value];
+      key = new long int[value];
       expected_status = new bool[value];
 
       for(i = 0; i < value; i++)
@@ -78,16 +78,16 @@ int memo_batch_tester(int argc, char *argv[])
     switch(op[i])
     {
       case READ:
-        list.retrieve(position, DataItem, success);
+        list.retrieve(position, key[i], success);
         break;
       case WRITE: 
-        list.insert(new_position, new_item, success);
+        list.insert(new_position, key[i], success);
         break;
       case DELETE: 
         list.remove(position, success);
         break;
       default: 
-        cout << "Error" << " # " <<endl;
+        cout << "Failed" <<endl;
         break;
     }
     actual_status = list.get_status();
@@ -104,7 +104,7 @@ int memo_batch_tester(int argc, char *argv[])
       cout << "Good" <<endl;
     }
   }
-  cout << "number of errors (Ben's way): " << num_errors << endl;
+  cout << "Number of errors: " << num_errors << endl;
   
   /*  Task 3 is done! No more code below this line */
   /*================================================================================*/  

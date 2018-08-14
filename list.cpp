@@ -85,5 +85,6 @@ void List::retrieve(int position, list_item_type &DataItem, bool &success) const
 
 bool List::get_status()
 {
-  cout << "Actual" <<endl;
+  //cout << "Actual" <<endl;
+  return false;
 }
