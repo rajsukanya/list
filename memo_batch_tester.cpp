@@ -39,8 +39,8 @@ int memo_batch_tester(int argc, char *argv[])
   
   while(inStream >> tag >> value)
   {
-    cout << "TAG: " << tag <<endl; 
-    cout << "VALUE: " << value <<endl;
+    //cout << "TAG: " << tag <<endl; 
+    //cout << "VALUE: " << value <<endl;
   
     if(tag == "NUM_OPERATIONS")
     {
@@ -61,7 +61,7 @@ int memo_batch_tester(int argc, char *argv[])
         {
           expected_status[i] = false;
         }
-        cout << op[i] <<endl; 
+        //cout << op[i] <<endl; 
         //cout << key[i] <<endl;
         //cout << expected_status[i] <<endl;
       }
@@ -72,25 +72,25 @@ int memo_batch_tester(int argc, char *argv[])
   /*  Task 2 is done! */
   /*================================================================================*/
   /*  Task 3 perform operations and check for errors */
-  /*
+  
   for(i = 0; i < value; i++)
   {
     switch(op[i])
     {
       case READ:
-        //retrieve(position, DataItem, success);
+        retrieve(position, DataItem, success);
         break;
       case WRITE: 
-        //insert(new_position, new_item, success);
+        insert(new_position, new_item, success);
         break;
       case DELETE: 
-        //remove(position, success);
+        remove(position, success);
         break;
       default: 
         cout << "Error" << " # " <<endl;
         break;
     }
-    //actual_status = get_status();
+    actual_status = get_status();
     if(actual_status != expected_status[i]){
       cout << "Error" << endl;
       num_errors++;
@@ -101,7 +101,7 @@ int memo_batch_tester(int argc, char *argv[])
     }
   }
   cout << "number of errors (Ben's way): " << num_errors << endl;
-  */
+  
   /*  Task 3 is done! No more code below this line */
   /*================================================================================*/  
 }
