@@ -36,18 +36,15 @@ int memo_batch_tester(int argc, char *argv[])
     cout << "Failed to open file" <<endl;
     exit(1);
   }
-  inStream >> tag >> value;
-  cout << tag <<endl;
-  cout << value <<endl;
-/*  
+  
   while(inStream >> tag >> value)
   {
-    cout << "TAG: " <<endl; 
-    cout << "VALUE: " <<endl;
+    cout << "TAG: " << tag <<endl; 
+    cout << "VALUE: " << value <<endl;
   
     if(tag == "NUM_OPERATIONS")
     {
-      cout << "VALUE: " <<endl;
+      //cout << "VALUE***: " << value <<endl;
       op = new int[value];
       key = new int[value];
       expected_status = new bool[value];
@@ -64,14 +61,14 @@ int memo_batch_tester(int argc, char *argv[])
         {
           expected_status[i] = false;
         }
-        //cout << op[i] <<endl; 
+        cout << op[i] <<endl; 
         //cout << key[i] <<endl;
-        cout << expected_status[i] <<endl;
+        //cout << expected_status[i] <<endl;
       }
     }
   }
   inStream.close();
-  */
+  
   /*  Task 2 is done! */
   /*================================================================================*/
   /*  Task 3 perform operations and check for errors */
