@@ -13,9 +13,9 @@ int memo_batch_tester(int argc, char *argv[])
 {
   ifstream inStream;
   string line, tag, filename;
-  list_item_type new_item;
+  list_item_type new_item, DataItem;
   bool success, actual_status = false;
-  int position, new_position, DataItem;
+  int position, new_position;
   int i, t, value, num_errors = 0;
   int *op, *key;
   bool *expected_status;
@@ -29,7 +29,7 @@ int memo_batch_tester(int argc, char *argv[])
   /*  Task 1 is done!  */
   /*================================================================================*/
   /*  Task 2 read data from file  */
- 
+  
   inStream.open(filename.c_str());
   if(inStream.fail())
   {
@@ -72,26 +72,30 @@ int memo_batch_tester(int argc, char *argv[])
   /*  Task 2 is done! */
   /*================================================================================*/
   /*  Task 3 perform operations and check for errors */
-  
+  List list;
   for(i = 0; i < value; i++)
   {
     switch(op[i])
     {
       case READ:
-        retrieve(position, DataItem, success);
+        list.retrieve(position, DataItem, success);
         break;
       case WRITE: 
-        insert(new_position, new_item, success);
+        list.insert(new_position, new_item, success);
         break;
       case DELETE: 
-        remove(position, success);
+        list.remove(position, success);
         break;
       default: 
         cout << "Error" << " # " <<endl;
         break;
     }
-    actual_status = get_status();
-    if(actual_status != expected_status[i]){
+    actual_status = list.get_status();
+    //cout << "Actual: " << actual_status <<endl;
+    //cout << "Expected: " << expected_status[i] <<endl;
+
+    if(actual_status != expected_status[i])
+    {
       cout << "Error" << endl;
       num_errors++;
     }
