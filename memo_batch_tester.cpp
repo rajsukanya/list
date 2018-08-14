@@ -14,11 +14,11 @@ int memo_batch_tester(int argc, char *argv[])
   ifstream inStream;
   string line, tag, filename;
   list_item_type new_item;
-  bool success, actual;
+  bool success, actual_status = false;
   int position, new_position, DataItem;
-  int i, value, numError = 0, num_errors = 0;
-  int op[value], key[value], t;
-  bool expected_status[value];
+  int i, t, value, num_errors = 0;
+  int *op, *key;
+  bool *expected_status;
 
   /*================================================================================*/
   /*  Task 1: Deal with command line parameters  */
@@ -36,17 +36,26 @@ int memo_batch_tester(int argc, char *argv[])
     cout << "Failed to open file" <<endl;
     exit(1);
   }
-  
-  while(getline(inStream, line))
+  inStream >> tag >> value;
+  cout << tag <<endl;
+  cout << value <<endl;
+/*  
+  while(inStream >> tag >> value)
   {
-    inStream >> tag >> value;
-    
+    cout << "TAG: " <<endl; 
+    cout << "VALUE: " <<endl;
+  
     if(tag == "NUM_OPERATIONS")
     {
+      cout << "VALUE: " <<endl;
+      op = new int[value];
+      key = new int[value];
+      expected_status = new bool[value];
+
       for(i = 0; i < value; i++)
       {
         inStream >> op[i] >> key[i] >> t;
-       
+
         if(t == 1)
         {
           expected_status[i] = true;
@@ -55,15 +64,18 @@ int memo_batch_tester(int argc, char *argv[])
         {
           expected_status[i] = false;
         }
-        //cout << expected_status[i] <<endl;
+        //cout << op[i] <<endl; 
+        //cout << key[i] <<endl;
+        cout << expected_status[i] <<endl;
       }
     }
   }
   inStream.close();
-  
+  */
   /*  Task 2 is done! */
   /*================================================================================*/
   /*  Task 3 perform operations and check for errors */
+  /*
   for(i = 0; i < value; i++)
   {
     switch(op[i])
@@ -78,33 +90,21 @@ int memo_batch_tester(int argc, char *argv[])
         //remove(position, success);
         break;
       default: 
-        cout << "Error" <<endl;
+        cout << "Error" << " # " <<endl;
         break;
     }
-    //actual = get_status();
-    if(actual == false && expected_status[i] == false)
-      cout << "Good" <<endl;
-    if(actual == true && expected_status[i] == true)
-      cout << "Good" <<endl;
-    if(actual == false && expected_status[i] == true)
-    {
-      cout << "Error" << " * " <<endl;
-      numError++;
-    }
-    if(actual == true && expected_status[i] == false)
-    {
-      cout << "Error" << " & "<<endl;
-      numError++;
-    }
-    /* you check errors using the above code */
-    /* why not just do this? */
-    if(actual != expected_status[i]){
+    //actual_status = get_status();
+    if(actual_status != expected_status[i]){
       cout << "Error" << endl;
       num_errors++;
     }
+    else
+    {
+      cout << "Good" <<endl;
+    }
   }
-  cout << "number of errors (Sukanya's way): " << numError << endl;
   cout << "number of errors (Ben's way): " << num_errors << endl;
+  */
   /*  Task 3 is done! No more code below this line */
   /*================================================================================*/  
 }
