@@ -3,6 +3,14 @@
 #include <iostream>
 using namespace std;
 
+Cache::Cache()
+{
+}
+
+Cache::~Cache()
+{
+}
+
 bool Cache::get_status()
 {
   return false;
