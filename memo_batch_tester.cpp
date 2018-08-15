@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "list.h"
+#include "cache.h"
 #include "memo_batch_tester.h"
 using namespace std;
 
@@ -13,11 +13,10 @@ int memo_batch_tester(int argc, char *argv[])
 {
   ifstream inStream;
   string tag, filename;
-  bool success, actual_status = false;
-  int position, new_position;
+  bool actual_status = false;
   int i, t, value, num_errors = 0;
   int *op;
-  list_item_type *key;
+  data_item_type *key;
   bool *expected_status;
 
   /*================================================================================*/
@@ -72,25 +71,25 @@ int memo_batch_tester(int argc, char *argv[])
   /*  Task 2 is done! */
   /*================================================================================*/
   /*  Task 3 perform operations and check for errors */
-  List list;
+  Cache cache;
   for(i = 0; i < value; i++)
   {
     switch(op[i])
     {
       case READ:
-        list.retrieve(position, key[i], success);
+        cache.retrieve(key[i]);
         break;
       case WRITE: 
-        list.insert(new_position, key[i], success);
+        cache.insert(key[i]);
         break;
       case DELETE: 
-        list.remove(position, success);
+        cache.remove(key[i]);
         break;
       default: 
         cout << "Failed" <<endl;
         break;
     }
-    actual_status = list.get_status();
+    actual_status = cache.get_status();
     //cout << "Actual: " << actual_status <<endl;
     //cout << "Expected: " << expected_status[i] <<endl;
 
