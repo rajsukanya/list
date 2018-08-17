@@ -88,3 +88,7 @@ bool List::get_status()
   //cout << "Actual" <<endl;
   return false;
 }
+
+int List::find(list_item_type item) const
+{
+}

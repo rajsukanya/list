@@ -44,7 +44,7 @@ data_item_type* Cache::retrieve(data_item_type key) const
   if(pos >= 0)
   {
     data_item_type *result;
-    list.retrieve(pos, result, success);
+    list.retrieve(pos, *result, success);
     actual_status = true;
     return result;
   } 
