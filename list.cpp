@@ -24,7 +24,7 @@ int List::length() const
 {  
 }
 
-void List::insert(int new_position, list_item_type new_item, bool &success)
+void List::insert(int new_position, list_item_type new_item, bool &success) const
 {
   cout << "Insert" <<endl;
   /*
@@ -49,7 +49,7 @@ void List::insert(int new_position, list_item_type new_item, bool &success)
   */
 }
 
-void List::remove(int position, bool &success)
+void List::remove(int position, bool &success) const
 {
   cout << "Remove" <<endl;
   /*

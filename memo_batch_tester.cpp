@@ -14,7 +14,7 @@ int memo_batch_tester(int argc, char *argv[])
   ifstream inStream;
   string tag, filename;
   bool actual_status = false;
-  int i, t, value, num_errors = 0;
+  int i, t, value, num_operations, num_errors = 0;
   int *op;
   data_item_type *key;
   bool *expected_status;
@@ -43,12 +43,12 @@ int memo_batch_tester(int argc, char *argv[])
   
     if(tag == "NUM_OPERATIONS")
     {
-      //cout << "VALUE***: " << value <<endl;
-      op = new int[value];
-      key = new long int[value];
-      expected_status = new bool[value];
+      num_operations = value;
+      op = new int[num_operations];
+      key = new long int[num_operations];
+      expected_status = new bool[num_operations];
 
-      for(i = 0; i < value; i++)
+      for(i = 0; i < num_operations; i++)
       {
         inStream >> op[i] >> key[i] >> t;
 
@@ -72,14 +72,18 @@ int memo_batch_tester(int argc, char *argv[])
   /*================================================================================*/
   /*  Task 3 perform operations and check for errors */
   Cache cache;
-  for(i = 0; i < value; i++)
+  num_operations = value;
+  
+  for(i = 0; i < num_operations; i++)
   {
     switch(op[i])
     {
       case READ:
+        cout << "reading " << key[i] << endl;
         cache.retrieve(key[i]);
         break;
       case WRITE: 
+        cout << "writing " << key[i] << endl;
         cache.insert(key[i]);
         break;
       case DELETE: 
