@@ -16,43 +16,44 @@ Cache::~Cache()
 
 bool Cache::get_status()
 {
-  bool actual_status;
   return actual_status;
 }
 
 void Cache::insert(data_item_type key)
 {
-  bool success, actual_status;
+  bool success;
   int pos = list.find(key);
   if(pos == -1)
   {
     list.insert(num_items, key, success);
-    actual_status = true;
+    actual_status = false;
     num_items++;
   } 
   else 
   {
-    actual_status = false;
+    actual_status = true;
   }
+  cout << "INSERT ACTUAL_STATUS: " << actual_status <<endl;
   cout << "Insert" <<endl;
 }
 
-data_item_type* Cache::retrieve(data_item_type key) const
+data_item_type* Cache::retrieve(data_item_type key) 
 {
-  bool success, actual_status;
+  bool success;
   int pos = list.find(key);
   if(pos >= 0)
   {
     data_item_type *result;
     list.retrieve(pos, *result, success);
-    actual_status = true;
-    return result;
+    actual_status = false;
+    //return result;
   } 
   else 
   {
-    actual_status = false;
+    actual_status = true;
     return NULL;
-  }
+  } 
+  cout << "RETRIEVE ACTUAL_STATUS: " << actual_status <<endl;
   cout << "Retrieve" <<endl;
 }
 

@@ -4,7 +4,7 @@ using namespace std;
 
 ArrayBasedList::ArrayBasedList()
 {
-  table = new int[100];
+  table = new int[200000];
 }
 
 ArrayBasedList::~ArrayBasedList()

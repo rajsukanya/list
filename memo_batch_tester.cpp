@@ -24,7 +24,7 @@ int memo_batch_tester(int argc, char *argv[])
   
   /* for now just this, but later this section gets more complicated */
   filename = argv[1];
-  
+  cout << filename <<endl;
   /*  Task 1 is done!  */
   /*================================================================================*/
   /*  Task 2 read data from file  */

@@ -13,11 +13,12 @@ class Cache
     ~Cache();
     bool get_status();
     void insert(data_item_type key);
-    data_item_type * retrieve(data_item_type key) const;
+    data_item_type * retrieve(data_item_type key);
     void remove(data_item_type key) const;
   private:
     int num_items;
     List list;
+    bool actual_status;
 };
 
 #endif
