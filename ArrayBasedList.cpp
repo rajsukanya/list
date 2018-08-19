@@ -1,12 +1,13 @@
 #include <iostream>
+#include <cstdlib>
 #include "ArrayBasedList.h"
 using namespace std;
 
-const int SIZE = 100;
+#define CAREFUL 
 
 ArrayBasedList::ArrayBasedList()
 {
-  table = new int[SIZE];
+  table = new int[100];
 }
 
 ArrayBasedList::~ArrayBasedList()
@@ -30,10 +31,17 @@ void ArrayBasedList::retrieve(int position, list_item_type &data_item, bool &suc
 int ArrayBasedList::find(list_item_type item) const
 {
   list_item_type key;
-  for(int g = 0; g < SIZE; g++)
+  for(int g = 0; g < num_items; g++)
   {
     if(table[g] == key)
     {
+#ifdef CAREFUL
+      if(g <= num_items)
+      {
+        cout << "ERROR!" <<endl;
+        exit(1);
+      }
+#endif
       return g;
     }
   }
