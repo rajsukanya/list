@@ -36,7 +36,7 @@ int ArrayBasedList::find(list_item_type item) const
     if(table[g] == key)
     {
 #ifdef CAREFUL
-      if(g <= num_items)
+      if(g >= num_items)
       {
         cout << "ERROR!" <<endl;
         exit(1);
