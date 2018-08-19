@@ -23,18 +23,34 @@ void Cache::insert(data_item_type key)
 {
   bool success;
   int pos = list.find(key);
-  if(pos == -1)
+  cout << "POS >> " << pos <<endl;
+  if(pos >= 0)
+  {
+    actual_status = false;
+    cout << "IF LOOP" <<endl;
+  }
+  else
   {
     list.insert(num_items, key, success);
-    actual_status = false;
+    actual_status = true;
+    num_items++;
+    cout << "INSIDE ELSE LOOP" <<endl;
+  }
+  cout << "NUM_ITEMS: " << num_items <<endl;
+ /*
+ if(pos == -1)
+  {
+    list.insert(num_items, key, success);
+    actual_status = true;
     num_items++;
   } 
   else 
   {
-    actual_status = true;
+    actual_status = false;
   }
+*/
   cout << "INSERT ACTUAL_STATUS: " << actual_status <<endl;
-  cout << "Insert" <<endl;
+  //cout << "Insert" <<endl;
 }
 
 data_item_type* Cache::retrieve(data_item_type key) 
@@ -45,16 +61,16 @@ data_item_type* Cache::retrieve(data_item_type key)
   {
     data_item_type *result;
     list.retrieve(pos, *result, success);
-    actual_status = false;
-    //return result;
+    actual_status = true;
+    return result;
   } 
   else 
   {
-    actual_status = true;
+    actual_status = false;
     return NULL;
   } 
-  cout << "RETRIEVE ACTUAL_STATUS: " << actual_status <<endl;
-  cout << "Retrieve" <<endl;
+  //cout << "RETRIEVE ACTUAL_STATUS: " << actual_status <<endl;
+  //cout << "Retrieve" <<endl;
 }
 
 void Cache::remove(data_item_type key) const
