@@ -6,7 +6,6 @@ using namespace std;
 Cache::Cache()
 {
   list = ArrayBasedList();
-  num_items = 0;
 }
 
 Cache::~Cache()
@@ -22,10 +21,9 @@ bool Cache::get_status()
 void Cache::insert(data_item_type key)
 {
   bool success;
-  num_items = list.get_numItems();
-  int pos = list.find(key);
-  cout << "POS >> " << pos <<endl;
-  if(pos == num_items)
+  int num_items = list.get_numItems();
+
+  if(list.find(key) == num_items)
   {
     list.insert(num_items, key, success);
     actual_status = true;

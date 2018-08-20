@@ -5,7 +5,8 @@ using namespace std;
 
 ArrayBasedList::ArrayBasedList()
 {
-  table = new int[100];
+  table_capacity = 100;
+  table = new int[table_capacity];
 }
 
 ArrayBasedList::~ArrayBasedList()
@@ -17,6 +18,7 @@ void ArrayBasedList::insert(int new_position, list_item_type new_item, bool &suc
 {
   table[new_position] = new_item;
   num_items++;
+  view_rawTable();
   //cout << "insert" <<endl;
 }
 
@@ -26,9 +28,8 @@ void ArrayBasedList::retrieve(int position, list_item_type &data_item, bool &suc
   //cout << "retrieve" <<endl;
 }
 
-int ArrayBasedList::find(list_item_type item) const
+int ArrayBasedList::find(list_item_type key) const
 {
-  list_item_type key;
   for(int g = 0; g < num_items; g++)
   {
     if(table[g] == key)
@@ -37,4 +38,12 @@ int ArrayBasedList::find(list_item_type item) const
     }
   }
   return num_items;
+}
+
+void ArrayBasedList::view_rawTable()
+{
+  for(int g = 0; g < table_capacity; g++)
+  {
+    cout << g << "  " << table[g] <<endl;
+  }
 }

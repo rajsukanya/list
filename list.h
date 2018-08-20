@@ -16,6 +16,7 @@ class List
     bool get_status();
     int find(list_item_type item) const;
     int get_numItems();
+    void view_rawTable();
   protected:
     int num_items;
 };

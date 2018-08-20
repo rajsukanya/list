@@ -95,3 +95,7 @@ int List::find(list_item_type item) const
 int List::get_numItems()
 {
 }
+
+void List::view_rawTable()
+{
+}

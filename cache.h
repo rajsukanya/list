@@ -16,7 +16,6 @@ class Cache
     data_item_type * retrieve(data_item_type key);
     void remove(data_item_type key) const;
   private:
-    int num_items;
     List list;
     bool actual_status;
 };
