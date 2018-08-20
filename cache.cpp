@@ -34,7 +34,7 @@ void Cache::insert(data_item_type key)
     actual_status = false;
   }
   //list.view_rawTable();
-  cout << "NUM_ITEMS: " << num_items <<endl;
+  //cout << "NUM_ITEMS: " << num_items <<endl;
   cout << "INSERT ACTUAL_STATUS: " << actual_status <<endl;
   //cout << "Insert" <<endl;
 }
