@@ -85,10 +85,13 @@ void List::retrieve(int position, list_item_type &DataItem, bool &success) const
 
 bool List::get_status()
 {
-  //cout << "Actual" <<endl;
   return false;
 }
 
 int List::find(list_item_type item) const
+{
+}
+
+int List::get_numItems()
 {
 }

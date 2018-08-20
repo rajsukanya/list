@@ -3,8 +3,6 @@
 #include "ArrayBasedList.h"
 using namespace std;
 
-#define CAREFUL 
-
 ArrayBasedList::ArrayBasedList()
 {
   table = new int[100];
@@ -35,15 +33,8 @@ int ArrayBasedList::find(list_item_type item) const
   {
     if(table[g] == key)
     {
-#ifdef CAREFUL
-      if(g >= num_items)
-      {
-        cout << "ERROR!" <<endl;
-        exit(1);
-      }
-#endif
       return g;
     }
   }
-  return -1;
+  return num_items;
 }

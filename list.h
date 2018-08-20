@@ -15,6 +15,7 @@ class List
     void retrieve(int position, list_item_type &DataItem, bool &success) const;
     bool get_status();
     int find(list_item_type item) const;
+    int get_numItems();
   protected:
     int num_items;
 };

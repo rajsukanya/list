@@ -22,33 +22,19 @@ bool Cache::get_status()
 void Cache::insert(data_item_type key)
 {
   bool success;
+  num_items = list.get_numItems();
   int pos = list.find(key);
   cout << "POS >> " << pos <<endl;
-  if(pos >= 0)
+  if(pos == num_items)
   {
-    actual_status = false;
-    cout << "IF LOOP" <<endl;
+    list.insert(num_items, key, success);
+    actual_status = true;
   }
   else
   {
-    list.insert(num_items, key, success);
-    actual_status = true;
-    num_items++;
-    cout << "INSIDE ELSE LOOP" <<endl;
-  }
-  cout << "NUM_ITEMS: " << num_items <<endl;
- /*
- if(pos == -1)
-  {
-    list.insert(num_items, key, success);
-    actual_status = true;
-    num_items++;
-  } 
-  else 
-  {
     actual_status = false;
   }
-*/
+  cout << "NUM_ITEMS: " << num_items <<endl;
   cout << "INSERT ACTUAL_STATUS: " << actual_status <<endl;
   //cout << "Insert" <<endl;
 }
