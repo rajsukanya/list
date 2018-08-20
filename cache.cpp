@@ -22,7 +22,8 @@ void Cache::insert(data_item_type key)
 {
   bool success;
   int num_items = list.get_numItems();
-
+  cout << "local variable num_items " << num_items <<endl;
+  cout << "list.find(key) " << list.find(key) <<endl;
   if(list.find(key) == num_items)
   {
     list.insert(num_items, key, success);
@@ -32,7 +33,7 @@ void Cache::insert(data_item_type key)
   {
     actual_status = false;
   }
-  list.view_rawTable();
+  //list.view_rawTable();
   cout << "NUM_ITEMS: " << num_items <<endl;
   cout << "INSERT ACTUAL_STATUS: " << actual_status <<endl;
   //cout << "Insert" <<endl;

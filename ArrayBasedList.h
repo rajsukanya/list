@@ -10,8 +10,8 @@ class ArrayBasedList : public List
     ~ArrayBasedList();
     void insert(int new_position, list_item_type new_item, bool &success);
     void retrieve(int position, list_item_type &DataItem, bool &success) const;
-    int find(list_item_type item) const;
-    void view_rawTable();
+    int find(list_item_type key);
+    //void view_rawTable();
   private:
     int *table;
     int table_capacity;

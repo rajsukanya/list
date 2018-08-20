@@ -1,101 +1,59 @@
 #include <iostream>
+#include <cstdlib>
 #include "list.h"
 using namespace std;
 
 List::List()
 {
-  //int size = 0; 
 }
 
 List::~List()
 {
-  //int size = 0;
 }
 
 bool List::is_empty() const
 {
-  /*
-  int size;
-  return(0 == size);
-  */
+  cout << "is_empty not implemented" <<endl;
+  exit(1);
 }
 
 int List::length() const
 {  
+  cout << "length not implemented" <<endl;
+  exit(1);
 }
 
 void List::insert(int new_position, list_item_type new_item, bool &success) const
 {
-  cout << "Insert" <<endl;
-  /*
-  if(N == size)
-    success = false; //array is full, cannot insert
-  
-  else if(position_to_insert < 1 || position_to_insert > size+1)
-    success = false; //bad value of position_to_insert
-  
-  else
-  {
-    //make room for new item by shifting all items at k >= position_to_start
-    //toward the end of the list
-    
-    for(int k = size-1; k >= position_to_insert-1; k--)
-      items[k+1] = Items[k];
-      //insert new item
-      items[position_to_insert-1] = new_item;
-      size++;
-      success = true;
-  }
-  */
+  cout << "insert not implemented" <<endl;
+  exit(1);
 }
 
 void List::remove(int position, bool &success) const
 {
-  cout << "Remove" <<endl;
-  /*
-  if(0 == size)
-    success = false; //array is empty
-  
-  else if(position < 1 || position > size)
-    success = false; //bad position
-  
-  else
-  {
-    //shift all items at positions position down by 1 toward the end of the list. In this loop, k is the index of the target of the move, not the source
-    
-    for(int k = position-1; k <= size-2; k++)
-      items[k] = items[k+1];
-    size--;
-    success = true;
-  }
-  */
+  cout << "remove not implemented" <<endl;
+  exit(1);
 }
 
 void List::retrieve(int position, list_item_type &DataItem, bool &success) const
 {
-  cout << "Retrieve" <<endl;
-  /*
-  success = (1 <= position && position <= size);
-  if(success)
-  {
-    item = items[position - 1];
-  }
-  */
+  cout << "retrieve not implemented" <<endl;
+  exit(1);
 }
 
-bool List::get_status()
+int List::find(list_item_type key) const
 {
-  return false;
-}
-
-int List::find(list_item_type item) const
-{
+  cout << "List find not implemented" <<endl;
+  exit(1);
 }
 
 int List::get_numItems()
 {
+  return num_items;
 }
 
 void List::view_rawTable()
 {
+  cout << "view_rawTable not implemented" <<endl;
+  exit(1);
 }

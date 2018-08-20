@@ -13,8 +13,7 @@ class List
     void insert(int new_position, list_item_type new_item, bool &success) const;
     void remove(int position, bool &success) const;
     void retrieve(int position, list_item_type &DataItem, bool &success) const;
-    bool get_status();
-    int find(list_item_type item) const;
+    int find(list_item_type key) const;
     int get_numItems();
     void view_rawTable();
   protected:
