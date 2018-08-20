@@ -9,7 +9,7 @@ class ArrayBasedList : public List
     ArrayBasedList();
     ~ArrayBasedList();
     void insert(int new_position, list_item_type new_item, bool &success);
-    void retrieve(int position, list_item_type &DataItem, bool &success) const;
+    void retrieve(int position, list_item_type &data_item, bool &success);
     int find(list_item_type key);
     //void view_rawTable();
   private:

@@ -35,7 +35,7 @@ void List::remove(int position, bool &success) const
   exit(1);
 }
 
-void List::retrieve(int position, list_item_type &DataItem, bool &success) const
+void List::retrieve(int position, list_item_type &data_item, bool &success) const
 {
   cout << "retrieve not implemented" <<endl;
   exit(1);

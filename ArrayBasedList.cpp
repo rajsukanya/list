@@ -5,6 +5,7 @@ using namespace std;
 
 ArrayBasedList::ArrayBasedList()
 {
+  num_items = 0;
   table_capacity = 100;
   table = new int[table_capacity];
 }
@@ -16,15 +17,17 @@ ArrayBasedList::~ArrayBasedList()
 
 void ArrayBasedList::insert(int new_position, list_item_type new_item, bool &success)
 {
-  cout << "inside insert" <<endl;
+  //cout << "inside insert" <<endl;
   table[new_position] = new_item;
   num_items++;
   //cout << "subclass insert num items : " << num_items <<endl;
 }
 
-void ArrayBasedList::retrieve(int position, list_item_type &data_item, bool &success) const
+void ArrayBasedList::retrieve(int position, list_item_type &data_item, bool &success) 
 {
+  cout << "inside retrieve" <<endl;
   data_item = table[position];
+  num_items++;
 }
 
 int ArrayBasedList::find(list_item_type key) 

@@ -22,8 +22,8 @@ void Cache::insert(data_item_type key)
 {
   bool success;
   int num_items = list.get_numItems();
-  cout << "local variable num_items " << num_items <<endl;
-  cout << "list.find(key) " << list.find(key) <<endl;
+  //cout << "local variable num_items " << num_items <<endl;
+  //cout << "list.find(key) " << list.find(key) <<endl;
   if(list.find(key) == num_items)
   {
     list.insert(num_items, key, success);
@@ -43,19 +43,24 @@ data_item_type* Cache::retrieve(data_item_type key)
 {
   bool success;
   int pos = list.find(key);
-  if(pos >= 0)
+  int num_items = list.get_numItems();
+  cout << "POS >> " << pos <<endl;
+  cout << "num_items retrieve: " << num_items <<endl;
+  if(pos != num_items)
   {
+    //cout << "ENTERS IF LOOP" <<endl;
     data_item_type *result;
     list.retrieve(pos, *result, success);
     actual_status = true;
-    return result;
-  } 
+    //return result;
+    //cout << "RESULT: " << *result <<endl;
+  }
   else 
   {
     actual_status = false;
-    return NULL;
+    //return NULL;
   } 
-  //cout << "RETRIEVE ACTUAL_STATUS: " << actual_status <<endl;
+  cout << "RETRIEVE ACTUAL_STATUS: " << actual_status <<endl;
   //cout << "Retrieve" <<endl;
 }
 
