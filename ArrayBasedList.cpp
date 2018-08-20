@@ -18,7 +18,7 @@ void ArrayBasedList::insert(int new_position, list_item_type new_item, bool &suc
 {
   table[new_position] = new_item;
   num_items++;
-  view_rawTable();
+
   //cout << "insert" <<endl;
 }
 
@@ -42,6 +42,7 @@ int ArrayBasedList::find(list_item_type key) const
 
 void ArrayBasedList::view_rawTable()
 {
+  cout << "inside view_rawTable" <<endl;
   for(int g = 0; g < table_capacity; g++)
   {
     cout << g << "  " << table[g] <<endl;
