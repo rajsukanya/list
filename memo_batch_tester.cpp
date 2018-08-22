@@ -14,7 +14,7 @@ int memo_batch_tester(int argc, char *argv[])
   ifstream inStream;
   string tag, filename;
   bool actual_status = false;
-  int i, t, value, num_operations, num_errors = 0;
+  int i, t, value, num_operations, num_errors = 0, num_trials = 0;
   int *op;
   data_item_type *key;
   bool *expected_status;
@@ -38,20 +38,15 @@ int memo_batch_tester(int argc, char *argv[])
   
   while(inStream >> tag >> value)
   {
-    //cout << "TAG: " << tag <<endl; 
-    //cout << "VALUE: " << value <<endl;
-  
     if(tag == "NUM_OPERATIONS")
     {
       num_operations = value;
       op = new int[num_operations];
       key = new long int[num_operations];
       expected_status = new bool[num_operations];
-
       for(i = 0; i < num_operations; i++)
       {
         inStream >> op[i] >> key[i] >> t;
-
         if(t == 1)
         {
           expected_status[i] = true;
@@ -60,9 +55,6 @@ int memo_batch_tester(int argc, char *argv[])
         {
           expected_status[i] = false;
         }
-        //cout << op[i] <<endl; 
-        //cout << key[i] <<endl;
-        //cout << expected_status[i] <<endl;
       }
     }
   }
@@ -73,41 +65,33 @@ int memo_batch_tester(int argc, char *argv[])
   /*  Task 3 perform operations and check for errors */
   Cache cache;
   num_operations = value;
-  
+  data_item_type *item;
+  item = new long int;
   for(i = 0; i < num_operations; i++)
   {
     switch(op[i])
     {
       case READ:
-        cout << "reading " << key[i] << endl;
-        cache.retrieve(key[i]);
+        item = cache.retrieve(key[i]);
         break;
       case WRITE: 
-        cout << "writing " << key[i] << endl;
         cache.insert(key[i]);
         break;
       case DELETE: 
         cache.remove(key[i]);
         break;
       default: 
-        cout << "Failed" <<endl;
-        break;
+        cout << "Failed" << endl;
+        exit(1);
     }
     actual_status = cache.get_status();
-    //cout << "Actual: " << actual_status <<endl;
-    //cout << "Expected: " << expected_status[i] <<endl;
-
     if(actual_status != expected_status[i])
     {
-      cout << "Error" << endl;
       num_errors++;
     }
-    else
-    {
-      cout << "Good" <<endl;
-    }
+    num_trials++;
   }
-  cout << "Number of errors: " << num_errors << endl;
+  cout << "Number of errors: " << num_errors << "/" << num_trials << endl;
   
   /*  Task 3 is done! No more code below this line */
   /*================================================================================*/  

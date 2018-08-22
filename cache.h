@@ -10,13 +10,14 @@ class Cache
 {
   public:
     Cache();
-    ~Cache();
     bool get_status();
     void insert(data_item_type key);
     data_item_type * retrieve(data_item_type key);
     void remove(data_item_type key) const;
   private:
-    ArrayBasedList list;
+    List list;
+    //ArrayBasedList list;
+    long int * result;
     bool actual_status;
 };
 

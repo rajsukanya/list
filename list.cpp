@@ -11,37 +11,37 @@ List::~List()
 {
 }
 
-bool List::is_empty() const
+bool List::is_empty()
 {
   cout << "is_empty not implemented" <<endl;
   exit(1);
 }
 
-int List::length() const
+int List::length()
 {  
   cout << "length not implemented" <<endl;
   exit(1);
 }
 
-void List::insert(int new_position, list_item_type new_item, bool &success) const
+void List::insert(int new_position, list_item_type new_item, bool &success)
 {
   cout << "insert not implemented" <<endl;
   exit(1);
 }
 
-void List::remove(int position, bool &success) const
+void List::remove(int position, bool &success)
 {
   cout << "remove not implemented" <<endl;
   exit(1);
 }
 
-void List::retrieve(int position, list_item_type &data_item, bool &success) const
+void List::retrieve(int position, list_item_type &data_item, bool &success)
 {
   cout << "retrieve not implemented" <<endl;
   exit(1);
 }
 
-int List::find(list_item_type key) const
+int List::find(list_item_type key)
 {
   cout << "List find not implemented" <<endl;
   exit(1);
