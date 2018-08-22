@@ -1,0 +1,38 @@
+Function insert: (3 cases: middle, beginning, end)
+  IF head = NULL
+    return size equals zero/false
+  ENDIF
+
+Middle: (given a position to insert)
+  IF previous node = NULL
+    print out "error"/exit
+  ENDIF
+  declare new node
+  assign key to data field of new node
+  make new node point to next node(what previous node pointed to before)
+  make previous node point to new node
+
+Beginning:
+  declare new node
+  assign key to data field of new node
+  make new node as the head
+  make new node point to head node
+
+End:
+  declare new node
+  assign key to data field of new node
+  find tail node
+  make next field of tail node not NULL
+  make previous tail node point to new node  
+
+Function retrieve:
+  IF head = NULL
+    return size equals zero/false
+  ENDIF
+  initialize node pointer to head
+  WHILE(searching through each node)
+    if value in data field = key
+      return status = true
+    else
+      return status = false
+  ENDWHILE
