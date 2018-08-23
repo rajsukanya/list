@@ -1,4 +1,7 @@
-Function insert: (3 cases: middle, beginning, end)
+Insert
+INPUT: int new_position, list_item_type new_item, bool &success;
+OUTPUT: returns status equals true if insertion is successful/ returns status equals false if insertion is unsuccessful
+BEGIN
   IF head = NULL
     return size equals zero/false
   ENDIF
@@ -25,7 +28,9 @@ End:
   make next field of tail node not NULL
   make previous tail node point to new node  
 
-Function retrieve:
+Retrieve
+INPUT: int position, list_item_type &data_item, bool &success;
+OUTPUT: returns status equals true if key found/ returns status equals false if key not found
   IF head = NULL
     return size equals zero/false
   ENDIF
@@ -36,3 +41,4 @@ Function retrieve:
     else
       return status = false
   ENDWHILE
+END
